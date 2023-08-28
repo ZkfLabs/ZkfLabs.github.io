@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Taulukko</title>
+        <style>
+            .moveButton {
+                position: absolute;
+                top: 10px;
+                left: 265px;
+            }
+            .CheckButton {
+                position: absolute;
+                top: 10px;
+                left: 850px;
+            }
+            .user {
+                position: absolute;
+                top: 10px;
+                left: 600px;
+            }
+            .score {
+                position: absolute;
+                top: 0px;
+                left: 1600px;
+            }
+            .text {
+                position: absolute;
+                top: 100px;
+                left: 100px;
+                border: 2px solid gray;
+                font-size: 50px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Taulukko</h1>
+        <h1 class = "score"></h1>
+        <table>
+            <tr>
+                <td><textarea class = "text" placeholder="Type anything here."></textarea></td>
+                <td><button class = "moveButton" onfocus="pressed()" onmouseover="move()" hidden>Reset</button></td>
+                <td><button onclick="check()" class = "CheckButton">Set</button></td>
+                <td><input class = "user" type="number" placeholder="Set a number to gain acess to reset" size = "31"></input></td>
+            </tr>
+<script>
+
+    function check() {
+        var inpbox = document.querySelector('.CheckButton');
+        var userText = document.querySelector('.user').value;
+        var userTextBox = document.querySelector('.user');
+        var button = document.querySelector('.moveButton');
+        if (userText > 0) {
+            button.removeAttribute('hidden');
+            inpbox.setAttribute('hidden', true);
+            userTextBox.setAttribute('hidden', true);
+        }
+        console.log(userText)
+    }
+function generateRandomNumber(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+
+var count = 0;
+    function move(){
+        var countmax = document.querySelector('.user').value;
+        if (count == countmax) {
+            var countDisplay = document.querySelector('.score');
+            count = 0
+            return
+        }
+        var randomNumberY = generateRandomNumber(50, 750);
+        var randomNumberX = generateRandomNumber(50, 1600);
+        var button = document.querySelector('.moveButton');
+        var countDisplay = document.querySelector('.score');
+        button.style.top = randomNumberY + 'px';
+        button.style.left = randomNumberX + 'px';
+        count++;
+        countDisplay.textContent = "Count: " + count;
+        console.log(count)
+    }
+    function pressed() {
+        var button = document.querySelector('.moveButton');
+        var countDisplay = document.querySelector('.score');
+        var text = document.querySelector('.text');
+        button.style.top = "10px";
+        button.style.left = "265px";
+        countDisplay.textContent = ""
+        text.text = "";
+        location.reload();
+    }
+</script>
