@@ -34,6 +34,18 @@
                 left:42.3%;
                 z-index: -1;
                 width: 295px;
+                height: 150px;
+                background-color: #616161;
+                border-radius: 20px;
+                border: 1px solid rgb(59, 59, 59);
+                box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+            }
+            .infobox {
+                position: absolute;
+                top:1%;
+                left:80%;
+                z-index: -1;
+                width: 295px;
                 height: 115px;
                 background-color: #616161;
                 border-radius: 20px;
@@ -46,14 +58,16 @@
     <body>
         <h1 style = "text-align: center">Welcome To Labs.</h1>
         <h2 style = "text-align: center">I'am Zkf</h2>
+        <h3 style = "text-align: center">My discord is { zkf }</h3>
         <h1 class = "score"></h1>
         <tr>
             <td><button class = "moveButton" onfocus="pressed()" onmouseover="move()" hidden>Reset</button></td>
             <td><button onclick="check()" class = "CheckButton">Set</button></td>
             <td><input class = "user" type="number" placeholder="Set a number to gain acess to reset" size = "31"></input></td>
         </tr>
-        <div class = "square">
-            
+        <div class = "square"></div>
+        <div class = "infobox" hidden>
+            <p></p>
         </div>
     </body>
 <script>
