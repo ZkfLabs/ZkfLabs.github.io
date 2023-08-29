@@ -2,6 +2,111 @@
 <html>
     <head>
         <meta charset="utf-8">
+        <title>Welcome To labs</title>
+        <style>
+            .moveButton {
+                position: absolute;
+                top: 30px;
+                left: 25px;
+                width: 50px;
+                height: 50px;
+                
+            }
+            .CheckButton {
+                text-align: center;
+                position: absolute;
+                top: 30px;
+                left: 350px;
+            }
+            .user {
+                position: absolute;
+                top: 30px;
+                left: 100px;
+            }
+            .score {
+                position: absolute;
+                top: 0px;
+                left: 1600px;
+            }
+            .square {
+                position: absolute;
+                top:1%;
+                left:42.3%;
+                z-index: -1;
+                width: 295px;
+                height: 115px;
+                background-color: #616161;
+                border-radius: 20px;
+                border: 1px solid rgb(59, 59, 59);
+                box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+            }
+
+        </style>
+    </head>
+    <body>
+        <h1 style = "text-align: center">Welcome To Labs.</h1>
+        <h2 style = "text-align: center">I'am Zkf</h2>
+        <h1 class = "score"></h1>
+        <tr>
+            <td><button class = "moveButton" onfocus="pressed()" onmouseover="move()" hidden>Reset</button></td>
+            <td><button onclick="check()" class = "CheckButton">Set</button></td>
+            <td><input class = "user" type="number" placeholder="Set a number to gain acess to reset" size = "31"></input></td>
+        </tr>
+        <div class = "square">
+            
+        </div>
+    </body>
+<script>
+
+    function check() {
+        var inpbox = document.querySelector('.CheckButton');
+        var userText = document.querySelector('.user').value;
+        var userTextBox = document.querySelector('.user');
+        var button = document.querySelector('.moveButton');
+        if (userText > 0) {
+            button.removeAttribute('hidden');
+            inpbox.setAttribute('hidden', true);
+            userTextBox.setAttribute('hidden', true);
+        }
+        console.log(userText)
+    }
+function generateRandomNumber(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+
+var count = 0;
+    function move(){
+        var countmax = document.querySelector('.user').value;
+        if (count == countmax) {
+            var countDisplay = document.querySelector('.score');
+            count = 0
+            return
+        }
+        var randomNumberY = generateRandomNumber(50, 750);
+        var randomNumberX = generateRandomNumber(50, 1600);
+        var button = document.querySelector('.moveButton');
+        var countDisplay = document.querySelector('.score');
+        button.style.top = randomNumberY + 'px';
+        button.style.left = randomNumberX + 'px';
+        count++;
+        countDisplay.textContent = "Count: " + count;
+        console.log(count)
+    }
+    function pressed() {
+        var button = document.querySelector('.moveButton');
+        var countDisplay = document.querySelector('.score');
+        var text = document.querySelector('.text');
+        button.style.top = "30px";
+        button.style.left = "25px";
+        countDisplay.textContent = ""
+        text.text = "";
+        location.reload();
+    }
+</script><!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
         <title>Taulukko</title>
         <style>
             .moveButton {
