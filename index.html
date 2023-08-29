@@ -4,6 +4,17 @@
         <meta charset="utf-8">
         <title>Welcome To labs</title>
         <style>
+        body {
+             margin: 0;
+            padding: 0;
+            }
+        canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            border: 1px solid black;
+            z-index: -1;
+            }
             .moveButton {
                 position: absolute;
                 top: 30px;
@@ -55,11 +66,41 @@
         <div class = "infobox" hidden>
             <p></p>
         </div>
+        <canvas id="canvas" width= 5000 height= 5000 hidden></canvas>
     </body>
 <script>
-function generateRandomNumber(min, max) {
+    function generateRandomNumber(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
+const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+    const trailLength = 500; // Length of the trail in pixels
+    let trail = [];
+
+    canvas.addEventListener('mousemove', drawTrail);
+
+    function drawTrail(event) {
+      const x = event.clientX;
+      const y = event.clientY;
+
+      trail.push({ x, y });
+
+      if (trail.length > trailLength) {
+        trail.shift();
+      }
+
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      for (let i = 1; i < trail.length; i++) {
+        const prevPoint = trail[i - 1];
+        const currentPoint = trail[i];
+
+        ctx.beginPath();
+        ctx.moveTo(prevPoint.x, prevPoint.y);
+        ctx.lineTo(currentPoint.x, currentPoint.y);
+        ctx.stroke();
+      }
+    }
 
 
 var count = 0;
@@ -68,6 +109,8 @@ var count = 0;
         var randomNumberX = generateRandomNumber(50, 1600);
         var button = document.querySelector('.moveButton');
         var countDisplay = document.querySelector('.score');
+        var canvas = document.getElementById('canvas');
+        canvas.removeAttribute('hidden');
         button.style.top = randomNumberY + 'px';
         button.style.left = randomNumberX + 'px';
         count++;
