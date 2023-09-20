@@ -1,130 +1,15 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <title>Welcome To labs</title>
-        <style>
-        body {
-             margin: 0;
-            padding: 0;
-            }
-        canvas {
-            position: absolute;
-            top: 0;
-            left: 0;
-            border: 1px solid black;
-            z-index: -1;
-            }
-            .moveButton {
-                position: absolute;
-                top: 30px;
-                left: 25px;
-                width: 42px;
-                height: 42px;
-            }
-            .score {
-                position: absolute;
-                top: 0px;
-                left: 1600px;
-            }
-            .square {
-                position: absolute;
-                top:1%;
-                left:42.3%;
-                z-index: -1;
-                width: 295px;
-                height: 150px;
-                background-color: #616161;
-                border-radius: 20px;
-                border: 1px solid rgb(59, 59, 59);
-                box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-            }
-            .infobox {
-                position: absolute;
-                top:1%;
-                left:80%;
-                z-index: -1;
-                width: 295px;
-                height: 115px;
-                background-color: #616161;
-                border-radius: 20px;
-                border: 1px solid rgb(59, 59, 59);
-                box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-            }
-
-        </style>
-    </head>
-    <body>
-        <h1 style = "text-align: center">Welcome To Labs.</h1>
-        <h2 style = "text-align: center">I'am Zkf</h2>
-        <h3 style = "text-align: center">My discord is { zkf }</h3>
-        <h1 class = "score"></h1>
-        <tr>
-            <td><button class = "moveButton" onfocus="pressed()" onmouseover="move()">Press Me</button></td>
-        </tr>
-        <div class = "square"></div>
-        <div class = "infobox" hidden>
-            <p></p>
-        </div>
-        <canvas id="canvas" width= 5000 height= 5000 hidden></canvas>
-    </body>
-<script>
-    function generateRandomNumber(min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-const canvas = document.getElementById('canvas');
-    const ctx = canvas.getContext('2d');
-    const trailLength = 500; // Length of the trail in pixels
-    let trail = [];
-
-    canvas.addEventListener('mousemove', drawTrail);
-
-    function drawTrail(event) {
-      const x = event.clientX;
-      const y = event.clientY;
-
-      trail.push({ x, y });
-
-      if (trail.length > trailLength) {
-        trail.shift();
-      }
-
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-      for (let i = 1; i < trail.length; i++) {
-        const prevPoint = trail[i - 1];
-        const currentPoint = trail[i];
-
-        ctx.beginPath();
-        ctx.moveTo(prevPoint.x, prevPoint.y);
-        ctx.lineTo(currentPoint.x, currentPoint.y);
-        ctx.stroke();
-      }
-    }
-
-
-var count = 0;
-    function move(){
-        var randomNumberY = generateRandomNumber(50, 750);
-        var randomNumberX = generateRandomNumber(50, 1600);
-        var button = document.querySelector('.moveButton');
-        var countDisplay = document.querySelector('.score');
-        var canvas = document.getElementById('canvas');
-        canvas.removeAttribute('hidden');
-        button.style.top = randomNumberY + 'px';
-        button.style.left = randomNumberX + 'px';
-        count++;
-        countDisplay.textContent = "Count: " + count;
-        console.log(count)
-    }
-    function pressed() {
-        var button = document.querySelector('.moveButton');
-        var countDisplay = document.querySelector('.score');
-        var text = document.querySelector('.text');
-        button.style.top = "30px";
-        button.style.left = "25px";
-        countDisplay.textContent = ""
-        text.text = "";
-        location.reload();
-    }
-</script>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="index.css">
+    <title></title>
+</head>
+<body>
+    <h1 class="center" id="mainText">Hello</h1>
+    <p class="test" id="infobutton" onclick="infoPressed()">hey. im zkf, if you need more info. press here </p>
+</body>
+<script src="index.js"></script>
+</html>

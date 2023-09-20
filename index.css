@@ -1,0 +1,37 @@
+@font-face {
+    font-family: 'Volkswagen-Bold';
+    src: url('fonts/Volkswagen-Bold.otf');
+}
+
+body {background: url(images/background.jpg) repeat 0 0; }
+
+
+
+#mainText {
+    position: relative;
+    color: rgb(183, 29, 183);
+    text-align: center;
+    top: -20px;
+    font-family: 'Volkswagen-Bold';
+    font-size: 50px;
+}
+
+
+.center {
+    position: relative;
+    text-align: center;
+}
+.infoBox {
+    position: relative;
+    width: 200px;
+    height: 100px;
+    background-color: blue;
+    border-radius: 10px;
+}
+.test {
+    position: relative;
+    color: purple;
+    font-family: 'Volkswagen-Bold';
+    font-size: 25px;
+    text-align: center;
+}
